@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:EmployeeDetails="http://mycompany.com/xsd/EmployeeDetails" xmlns:DepartmentDetails="http://mycompany.com/xsd/DepartmentDetails" xmlns:tns="http://mycompany.com/soapservice/EmployeeDetailsWebservice" targetNamespace="http://mycompany.com/soapservice/EmployeeDetailsWebservice">
+	<types>
+		<xs:schema targetNamespace="http://mycompany.com/xsd/EmployeeDetails">
+			<xs:include schemaLocation="EmployeeDetails.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="getEmployeeDetailsRequest">
+		<part name="getEmployeeDetailsRequest" element="EmployeeDetails:getEmployeeDetailsRequest"/>
+	</message>
+	<message name="getEmployeeDetailsResponse">
+		<part name="getEmployeeDetailsResponse" element="EmployeeDetails:getEmployeeDetailsResponse"/>
+	</message>
+	<portType name="employeeDetailsPortType">
+		<operation name="getEmployeeDetails">
+			<input message="tns:getEmployeeDetailsRequest"/>
+			<output message="tns:getEmployeeDetailsResponse"/>
+		</operation>
+	</portType>
+	<binding name="employeeDetailsBindingName" type="tns:employeeDetailsPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getEmployeeDetails">
+			<soap:operation soapAction="http://mycompany.com/soapservice/EmployeeDetailsWebservice#getEmployeeDetails" type="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="employeeDetailsServiceName">
+		<documentation>WSDL File for employeeDetails SOAP webservice</documentation>
+		<port name="employeeDetailsPortType" binding="tns:employeeDetailsBindingName">
+			<soap:address location="http://mycompany.com/soapservice/EmployeeDetailsWebservice"/>
+		</port>
+	</service>
+</definitions>

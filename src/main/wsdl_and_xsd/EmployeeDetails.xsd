@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Address="http://mycompany.com/xsd/Address" xmlns:EmployeeDetails="http://mycompany.com/xsd/EmployeeDetails" targetNamespace="http://mycompany.com/xsd/EmployeeDetails" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://mycompany.com/xsd/Address" schemaLocation="Address.xsd"/>
+	<xs:complexType name="GetEmployeeDetailsRequest">
+		<xs:sequence>
+			<xs:element name="getEmployeeDetailsReq" type="EmployeeDetails:GetEmployeeDetailsReq"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GetEmployeeDetailsReq">
+		<xs:choice>
+			<xs:element name="byDepartmenId" type="xs:string"/>
+			<xs:element name="byDepartmentName" type="xs:string"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="EmployeeDetails">
+		<xs:annotation>
+			<xs:documentation>This schema defines the attributes of Employee Details request and response.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="employee" type="EmployeeDetails:Employee" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Employee">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="firstName" type="xs:string"/>
+			<xs:element name="lastName" type="xs:string"/>
+			<xs:element name="departmentId" type="xs:int"/>
+			<xs:element name="mobile" type="xs:string"/>
+			<xs:element name="addressDetails" type="Address:address"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="getEmployeeDetailsRequest" type="EmployeeDetails:GetEmployeeDetailsRequest"/>
+	<xs:element name="getEmployeeDetailsResponse" type="EmployeeDetails:EmployeeDetails"/>
+</xs:schema>
