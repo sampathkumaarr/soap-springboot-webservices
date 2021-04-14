@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Address="http://mycompany.com/xsd/Address" targetNamespace="http://mycompany.com/xsd/Address" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="address" type="Address:address"/>
+	<xs:complexType name="address">
+		<xs:sequence>
+			<xs:element name="addressLine1" type="xs:string"/>
+			<xs:element name="addressLine2" type="xs:string" minOccurs="0"/>
+			<xs:element name="addressLine3" type="xs:string" minOccurs="0"/>
+			<xs:element name="postcode" type="xs:string"/>
+			<xs:element name="town" type="xs:string"/>
+			<xs:element name="state" type="xs:string" minOccurs="0"/>
+			<xs:element name="country" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

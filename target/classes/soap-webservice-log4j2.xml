@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Properties>
+        <Property name="logFilePath">/MYCOMPANY/LOGS/</Property>
+        <Property name="apiName">SPRING-BOOT-SOAP-WEBSERVICE</Property>
+        <Property name="logPattern">%d{dd-MMM-yyyy-HH-mm-ss-SSS}|${apiName}|TRACE_ID=%X{traceId}|SPAN_ID=%X{spanId}|UNIQUE_ID=%X{uniqueId}|%level|%c#%M->%msg%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>${logPattern}</Pattern>
+            </PatternLayout>
+        </Console>
+        <RollingFile name="LogToRollingFile" fileName="${logFilePath}${apiName}.log"
+                filePattern="${logFilePath}/ROTATED_LOGS/${apiName}%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>${logPattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!-- avoid duplicated logs with additivity=false -->
+        <!--<Logger name="com.mycompany.eurekaserver" level="debug" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>-->
+        <Root level="INFO" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

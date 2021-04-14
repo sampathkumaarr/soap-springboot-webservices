@@ -8,23 +8,20 @@
 
 package com.mycompany.xsd.employeedetails;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
- * <p>Java class for GetEmployeeDetailsRequest complex type.
+ * <p>Java class for GetEmployeeDetailsResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="GetEmployeeDetailsRequest"&gt;
+ * &lt;complexType name="GetEmployeeDetailsResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="getEmployeeDetailsReq" type="{http://mycompany.com/xsd/EmployeeDetails}GetEmployeeDetailsReq"/&gt;
+ *         &lt;element name="getEmployeeDetailsRes" type="{http://mycompany.com/xsd/EmployeeDetails}GetEmployeeDetailsRes"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,37 +30,38 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "GetEmployeeDetailsRequest", propOrder = {
-    "getEmployeeDetailsReq"
+@XmlType(name = "GetEmployeeDetailsResponse", propOrder = {
+    "getEmployeeDetailsRes"
 })
-public class GetEmployeeDetailsRequest {
+public class GetEmployeeDetailsResponse {
 
     @XmlElement(required = true)
-    protected GetEmployeeDetailsReq getEmployeeDetailsReq;
+    protected GetEmployeeDetailsRes getEmployeeDetailsRes;
 
     /**
-     * Gets the value of the getEmployeeDetailsReq property.
+     * Gets the value of the getEmployeeDetailsRes property.
      * 
      * @return
      *     possible object is
-     *     {@link GetEmployeeDetailsReq }
+     *     {@link GetEmployeeDetailsRes }
      *     
      */
-    public GetEmployeeDetailsReq getGetEmployeeDetailsReq() {
-        return getEmployeeDetailsReq;
+    public GetEmployeeDetailsRes getGetEmployeeDetailsRes() {
+        return getEmployeeDetailsRes;
     }
 
     /**
-     * Sets the value of the getEmployeeDetailsReq property.
+     * Sets the value of the getEmployeeDetailsRes property.
      * 
      * @param value
      *     allowed object is
-     *     {@link GetEmployeeDetailsReq }
+     *     {@link GetEmployeeDetailsRes }
      *     
      */
-    public void setGetEmployeeDetailsReq(GetEmployeeDetailsReq value) {
-        this.getEmployeeDetailsReq = value;
+    public void setGetEmployeeDetailsRes(GetEmployeeDetailsRes value) {
+        this.getEmployeeDetailsRes = value;
     }
 
 }
